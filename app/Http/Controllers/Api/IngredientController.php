@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Ingredient;
+use App\Http\Resources\Ingredient as IngredientResource;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -47,7 +48,7 @@ class IngredientController extends Controller
      */
     public function show(Ingredient $ingredient)
     {
-        //
+        return new IngredientResource($ingredient);
     }
 
     /**
