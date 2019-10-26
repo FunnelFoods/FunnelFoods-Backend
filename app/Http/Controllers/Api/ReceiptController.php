@@ -11,7 +11,7 @@ class ReceiptController extends Controller
     /**
      * Display
      * @param Request $request
-     * @return \Psr\Http\Message\StreamInterface
+     * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function parse(Request $request) {
@@ -23,6 +23,7 @@ class ReceiptController extends Controller
         $response = $client->request('POST', 'match', [
             'body' => $input
         ]);
-        return $response->getBody();
+        $body = $response->getBody()->getContents();
+        return str_replace("'", "\"", $body);
     }
 }
