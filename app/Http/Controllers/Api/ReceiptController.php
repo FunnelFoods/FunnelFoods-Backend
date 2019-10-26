@@ -20,10 +20,10 @@ class ReceiptController extends Controller
             'base_uri' => 'http://127.0.0.1:5000/',
             'timeout'  => 2.0,
         ]);
-        $response = $client->request('POST', 'match', [
+        $content = $client->request('POST', 'match', [
             'body' => $input
-        ]);
-        $body = $response->getBody()->getContents();
-        return str_replace("'", "\"", $body);
+        ])->getBody()->getContents();
+        $content = str_replace('\'', '"', $content);
+        return response()->json(json_decode($content));
     }
 }
