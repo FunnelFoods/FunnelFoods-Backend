@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // TODO: Inject Middleware afterwards
 Route::apiResource('recipes', 'Api\RecipeController');
 
-Route::prefix('recipes')->group(function () {
-   Route::prefix('items')->group(function () {
-       Route::get('parse', 'Api\ReceiptController@parse');
-   });
+Route::apiResource('nutrients', 'Api\NutrientController');
+
+Route::prefix('receipt')->group(function () {
+    Route::get('parse', 'Api\ReceiptController@parse');
 });
