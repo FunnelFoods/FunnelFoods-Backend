@@ -25,5 +25,8 @@ Route::apiResource('ingredients', 'Api\IngredientController');
 Route::apiResource('nutrients', 'Api\NutrientController');
 
 Route::prefix('receipt')->group(function () {
+
     Route::get('parse', 'Api\ReceiptController@parse');
+    Route::get('recommend', 'Api\ReceiptController@recommend');
+
 });
